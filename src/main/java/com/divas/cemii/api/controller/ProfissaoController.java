@@ -23,7 +23,7 @@ public class ProfissaoController {
     @Autowired
     private ProfissaoService profissaoService;
 
-    @GetMapping("/{profissaoId}")
+    @GetMapping
     public List<Profissao> listar(){
         return profissaoRepository.findAll();
     }

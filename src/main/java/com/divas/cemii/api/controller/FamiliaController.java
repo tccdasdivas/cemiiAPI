@@ -1,10 +1,9 @@
 package com.divas.cemii.api.controller;
 
 import com.divas.cemii.domain.exception.EntidadeEmUsoException;
-import com.divas.cemii.domain.model.GrauParentesco;
-import com.divas.cemii.domain.model.Idoso;
-import com.divas.cemii.domain.repository.IdosoRepository;
-import com.divas.cemii.domain.service.IdosoService;
+import com.divas.cemii.domain.model.Familia;
+import com.divas.cemii.domain.repository.FamiliaRepository;
+import com.divas.cemii.domain.service.FamiliaService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -14,54 +13,54 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@RequestMapping("/{idosos}")
+@RequestMapping("/{familias}")
 @RestController
 public class FamiliaController {
 
     @Autowired
-    private IdosoRepository idosoRepository;
+    private FamiliaRepository familiaRepository;
 
     @Autowired
-    private IdosoService idosoService;
+    private FamiliaService familiaService;
 
     @GetMapping
-    public List<Idoso> listar(){
-        return idosoRepository.findAll();
+    public List<Familia> listar(){
+        return familiaRepository.findAll();
     }
 
-    @GetMapping("/{idosoId}")
-    public ResponseEntity<Idoso> buscar(@PathVariable Long idosoId){
-        Optional <Idoso> idoso = idosoRepository.findById(idosoId);
+    @GetMapping("/{familiaId}")
+    public ResponseEntity<Familia> buscar(@PathVariable Long familiaId){
+        Optional <Familia> familia = familiaRepository.findById(familiaId);
 
-        if (idoso.isPresent()){
-            return ResponseEntity.ok(idoso.get());
+        if (familia.isPresent()){
+            return ResponseEntity.ok(familia.get());
         }
         return ResponseEntity.notFound().build();
     }
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public Idoso adicionar(@RequestBody Idoso idoso){
-        return idosoService.salvar(idoso);
+    public Familia adicionar(@RequestBody Familia familia){
+        return familiaService.salvar(familia);
     }
 
-    @PutMapping("/{idosoId}")
-    public ResponseEntity<Idoso> atualizar(@PathVariable Long idosoId, @RequestBody Idoso idoso){
-        Optional <Idoso> idosoAtual = idosoRepository.findById(idosoId);
+    @PutMapping("/{familiaId}")
+    public ResponseEntity<Familia> atualizar(@PathVariable Long familiaId, @RequestBody Familia familia){
+        Optional <Familia> familiaAtual = familiaRepository.findById(familiaId);
 
-        if (idosoAtual != null){
-            BeanUtils.copyProperties(idoso, idosoAtual, "id");
+        if (familiaAtual != null){
+            BeanUtils.copyProperties(familia, familiaAtual, "id");
 
-            Idoso idosoSalva = idosoService.salvar(idosoAtual.get());
-            return ResponseEntity.ok(idosoSalva);
+            Familia familiaSalva = familiaService.salvar(familiaAtual.get());
+            return ResponseEntity.ok(familiaSalva);
         }
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping("/{idosoId}")
-    public ResponseEntity<Idoso> remover(@PathVariable Long idosoId){
+    @DeleteMapping("/{familiaId}")
+    public ResponseEntity<Familia> remover(@PathVariable Long familiaId){
         try{
-            idosoService.excluir(idosoId);
+            familiaService.excluir(familiaId);
             return ResponseEntity.notFound().build();
         } catch (EnumConstantNotPresentException e){
             return ResponseEntity.notFound().build();
