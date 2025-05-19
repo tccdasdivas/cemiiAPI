@@ -39,10 +39,13 @@ public class IdosoController {
         return ResponseEntity.notFound().build();
     }
 
+    @PostMapping
+    @ResponseStatus(HttpStatus.CREATED)
     public Idoso adicionar(@RequestBody Idoso idoso){
         return idosoService.salvar(idoso);
     }
 
+    @PutMapping("/{idosoId}")
     public ResponseEntity<Idoso> atualizar(@PathVariable Long idosoId, @RequestBody Idoso idoso){
         Optional <Idoso> idosoAtual = idosoRepository.findById(idosoId);
 
@@ -52,9 +55,10 @@ public class IdosoController {
             Idoso idosoSalva = idosoService.salvar(idosoAtual.get());
             return ResponseEntity.ok(idosoSalva);
         }
-        return ResponseEntity.notFound().build()
+        return ResponseEntity.notFound().build();
     }
 
+    @DeleteMapping("/{idosoId}")
     public ResponseEntity<Idoso> remover(@PathVariable Long idosoId){
         try{
             idosoService.excluir(idosoId);
