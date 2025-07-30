@@ -44,6 +44,9 @@ public class Familia {
     @JoinColumn(name="estado_id")
     private Estado estado;
 
+    @Embedded
+    private Endereco endereco;
+
     @NotBlank(message = "Este campo é obrigatório")
     private String nascimento;
 
