@@ -1,8 +1,12 @@
 package com.divas.cemii.domain.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -14,8 +18,14 @@ public class Profissao {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String enfermeiro;
-    private String coren;
-    private String cuidador;
+    @NotBlank(message = "Este campo é obrigatório")
+    private String profissao;
+
+    @Column(name = "data_atualizacao", columnDefinition = "datetime")
+    private LocalDateTime dataCadastro;
+
+    @UpdateTimestamp
+    @Column(name = "data_atualizacao", columnDefinition = "datetime")
+    private LocalDateTime dataAtualizacao;
 
 }

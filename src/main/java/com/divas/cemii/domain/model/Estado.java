@@ -1,6 +1,7 @@
 package com.divas.cemii.domain.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
@@ -14,5 +15,6 @@ public class Estado {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank(message = "Este campo é obrigatório")
     private String nome;
 }

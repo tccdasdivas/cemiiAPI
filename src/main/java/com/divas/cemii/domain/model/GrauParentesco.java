@@ -1,8 +1,12 @@
 package com.divas.cemii.domain.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.UpdateTimestamp;
+
+import java.time.LocalDateTime;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -14,11 +18,13 @@ public class GrauParentesco {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String mae;
-    private String pai;
-    private String filho;
-    private String irmao;
-    private String neto;
-    private String nora;
-    private String genro;
+    @NotBlank(message = "Este campo é obrigatório")
+    private String parente;
+
+    @Column(name = "data_atualizacao", columnDefinition = "datetime")
+    private LocalDateTime dataCadastro;
+
+    @UpdateTimestamp
+    @Column(name = "data_atualizacao", columnDefinition = "datetime")
+    private LocalDateTime dataAtualizacao;
 }
