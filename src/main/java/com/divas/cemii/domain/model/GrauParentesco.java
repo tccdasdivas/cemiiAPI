@@ -21,7 +21,7 @@ public class GrauParentesco {
     @NotBlank(message = "Este campo é obrigatório")
     private String parente;
 
-    @Column(name = "data_atualizacao", columnDefinition = "datetime")
+    @Column(name = "data_cadastro", columnDefinition = "datetime")
     private LocalDateTime dataCadastro;
 
     @UpdateTimestamp

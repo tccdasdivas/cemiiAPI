@@ -48,7 +48,7 @@ public class Cuidador {
     @NotBlank(message = "Este campo é obrigatório")
     private String nascimento;
 
-    @Column(name = "data_atualizacao", columnDefinition = "datetime")
+    @Column(name = "data_cadastro", columnDefinition = "datetime")
     private LocalDateTime dataCadastro;
 
     @UpdateTimestamp

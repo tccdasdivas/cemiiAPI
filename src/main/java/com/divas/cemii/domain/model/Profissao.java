@@ -21,7 +21,7 @@ public class Profissao {
     @NotBlank(message = "Este campo é obrigatório")
     private String profissao;
 
-    @Column(name = "data_atualizacao", columnDefinition = "datetime")
+    @Column(name = "data_cadastro", columnDefinition = "datetime")
     private LocalDateTime dataCadastro;
 
     @UpdateTimestamp
