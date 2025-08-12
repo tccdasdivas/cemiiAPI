@@ -44,6 +44,10 @@ public class Familia {
     @JoinColumn(name="estado_id")
     private Estado estado;
 
+    @OneToOne
+    @JoinColumn(name = "idoso_id")
+    private Idoso idoso;
+
     @Embedded
     private Endereco endereco;
 

@@ -5,6 +5,7 @@ email varchar (100),
 telefone varchar(12),
 cpf varchar (11),
 grauparentesco_id bigint not null,
+idoso_id bigint not null,
 cidade_id bigint not null,
 data_nascimento date not null,
 
