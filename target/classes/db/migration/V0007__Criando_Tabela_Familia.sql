@@ -11,4 +11,3 @@ data_nascimento date not null,
 
 primary key (id)
 ) engine=InnoDB default charset=utf8;
-

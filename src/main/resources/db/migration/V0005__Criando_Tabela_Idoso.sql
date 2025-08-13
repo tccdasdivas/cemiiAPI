@@ -4,7 +4,7 @@ nome varchar (100),
 email varchar (100),
 telefone varchar (12),
 cpf varchar (11),
-necessidades varchar (300),
+necessidades varchar (255),
 cidade_id bigint not null,
 data_nascimento date not null,
 
