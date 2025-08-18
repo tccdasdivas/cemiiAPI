@@ -4,10 +4,10 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
-import java.util.SplittableRandom;
 
 @Data
 @EqualsAndHashCode(onlyExplicitlyIncluded = true)
@@ -32,7 +32,7 @@ public class Familia {
     @NotBlank(message = "Este campo é obrigatório")
     private String cpf;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name="grauParentesco_id")
     private GrauParentesco grauParentesco;
 
@@ -54,6 +54,7 @@ public class Familia {
     @NotBlank(message = "Este campo é obrigatório")
     private String nascimento;
 
+    @CreationTimestamp
     @Column(name = "data_cadastro", columnDefinition = "datetime")
     private LocalDateTime dataCadastro;
 

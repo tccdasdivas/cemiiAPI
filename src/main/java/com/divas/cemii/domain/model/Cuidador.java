@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
@@ -48,6 +49,7 @@ public class Cuidador {
     @NotBlank(message = "Este campo é obrigatório")
     private String nascimento;
 
+    @CreationTimestamp
     @Column(name = "data_cadastro", columnDefinition = "datetime")
     private LocalDateTime dataCadastro;
 
