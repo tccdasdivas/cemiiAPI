@@ -8,6 +8,7 @@ grauparentesco_id bigint not null,
 idoso_id bigint not null,
 cidade_id bigint not null,
 data_nascimento date not null,
+foto varchar(255),
 
 primary key (id)
 ) engine=InnoDB default charset=utf8;

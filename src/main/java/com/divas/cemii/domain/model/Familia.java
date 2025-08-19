@@ -54,6 +54,9 @@ public class Familia {
     @NotBlank(message = "Este campo é obrigatório")
     private String nascimento;
 
+    @NotBlank(message = "Este campo é obrigatório")
+    private String foto;
+
     @CreationTimestamp
     @Column(name = "data_cadastro", columnDefinition = "datetime")
     private LocalDateTime dataCadastro;

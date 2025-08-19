@@ -31,6 +31,8 @@ public class Cuidador {
     @NotBlank(message = "Este campo é obrigatório")
     private String cpf;
 
+    @NotBlank(message = "Este campo é obrigatório")
+    private String foto;
     @ManyToOne
     @JoinColumn(name = "profissao_id")
     private Profissao profissao;

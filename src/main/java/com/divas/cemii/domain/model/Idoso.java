@@ -33,6 +33,9 @@ public class Idoso {
     private String cpf;
 
     @NotBlank(message = "Este campo é obrigatório")
+    private String foto;
+
+    @NotBlank(message = "Este campo é obrigatório")
     private String necessidade;
 
     @ManyToOne

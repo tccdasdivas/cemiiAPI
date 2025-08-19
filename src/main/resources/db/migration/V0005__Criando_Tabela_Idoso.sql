@@ -7,6 +7,7 @@ cpf varchar (11),
 necessidades varchar (255),
 cidade_id bigint not null,
 data_nascimento date not null,
+foto varchar(255),
 
 primary key (id)
 ) engine=InnoDB default charset=utf8;
