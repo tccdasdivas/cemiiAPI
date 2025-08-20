@@ -42,6 +42,9 @@ public class Idoso {
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
+    @Embedded
+    private Endereco endereco;
+
     @NotBlank(message = "Este campo é obrigatório")
     private String nascimento;
 
@@ -52,4 +55,12 @@ public class Idoso {
     @UpdateTimestamp
     @Column(name = "data_atualizacao", columnDefinition = "datetime")
     private LocalDateTime dataAtualizacao;
+
+    @ManyToOne
+    @JoinColumn(name="grauparentesco_id")
+    private GrauParentesco grauParentesco;
+
+    @ManyToOne
+    @JoinColumn(name = "responsavel_id")
+    private Responsavel responsavel;
 }

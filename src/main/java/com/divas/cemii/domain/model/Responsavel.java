@@ -9,11 +9,12 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Entity
-@EqualsAndHashCode(onlyExplicitlyIncluded = true)
 @Data
-@Table(name = "tb_cuidador")
-public class Cuidador {
+@EqualsAndHashCode(onlyExplicitlyIncluded = true)
+@Entity
+@Table(name = "tb_responsavel")
+public class Responsavel {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @EqualsAndHashCode.Include
@@ -31,18 +32,12 @@ public class Cuidador {
     @NotBlank(message = "Este campo é obrigatório")
     private String cpf;
 
-    @NotBlank(message = "Este campo é obrigatório")
-    private String foto;
     @ManyToOne
-    @JoinColumn(name = "profissao_id")
-    private Profissao profissao;
-
-    @ManyToOne
-    @JoinColumn(name = "cidade_id")
+    @JoinColumn(name="cidade_id")
     private Cidade cidade;
 
     @ManyToOne
-    @JoinColumn(name = "estado_id")
+    @JoinColumn(name="estado_id")
     private Estado estado;
 
     @Embedded
@@ -50,6 +45,9 @@ public class Cuidador {
 
     @NotBlank(message = "Este campo é obrigatório")
     private String nascimento;
+
+    @NotBlank(message = "Este campo é obrigatório")
+    private String foto;
 
     @CreationTimestamp
     @Column(name = "data_cadastro", columnDefinition = "datetime")
