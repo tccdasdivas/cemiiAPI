@@ -7,6 +7,7 @@ import lombok.EqualsAndHashCode;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
 
+import java.time.LocalDate;
 import java.time.LocalDateTime;
 
 @Entity
@@ -41,15 +42,12 @@ public class Profissional {
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
-    @ManyToOne
-    @JoinColumn(name = "estado_id")
-    private Estado estado;
-
     @Embedded
     private Endereco endereco;
 
     @NotBlank(message = "Este campo é obrigatório")
-    private String nascimento;
+    @Column(name = "data_nascimento", columnDefinition = "datetime")
+    private LocalDate nascimento;
 
     @CreationTimestamp
     @Column(name = "data_cadastro", columnDefinition = "datetime")
