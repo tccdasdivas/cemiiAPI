@@ -48,7 +48,7 @@ public class Idoso {
 
     @NotBlank(message = "Este campo é obrigatório")
     @Column(name = "data_nascimento", columnDefinition = "datetime")
-    private LocalDate dataNascimento;
+    private LocalDate nascimento;
 
     @CreationTimestamp
     @Column(name = "data_cadastro", columnDefinition = "datetime")

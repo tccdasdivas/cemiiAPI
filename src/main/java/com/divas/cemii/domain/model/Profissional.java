@@ -34,6 +34,7 @@ public class Profissional {
 
     @NotBlank(message = "Este campo é obrigatório")
     private String foto;
+
     @ManyToOne
     @JoinColumn(name = "profissao_id")
     private Profissao profissao;
