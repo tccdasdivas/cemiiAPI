@@ -5,12 +5,14 @@ import com.divas.cemii.domain.exception.EntidadeEmUsoException;
 import com.divas.cemii.domain.exception.EntidadeNaoEncontradaException;
 import com.divas.cemii.domain.model.GrauParentesco;
 import com.divas.cemii.domain.repository.GrauParentescoRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class GrauParentescoService {
+    @Autowired
     private GrauParentescoRepository grauParentescoRepository;
 
     public GrauParentesco salvar(GrauParentesco grauParentesco) {

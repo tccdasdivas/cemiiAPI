@@ -1,6 +1,5 @@
 package com.divas.cemii.api.controller;
 
-
 import com.divas.cemii.domain.exception.EntidadeEmUsoException;
 import com.divas.cemii.domain.model.Estado;
 import com.divas.cemii.domain.repository.EstadoRepository;
@@ -39,9 +38,9 @@ public class EstadoController {
     }
 
     @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Estado adicionar(@RequestBody Estado estado){
-        return estadoService.salvar(estado);
+    public ResponseEntity<Estado> adicionar(@RequestBody Estado estado){
+        estado = estadoService.salvar(estado);
+        return ResponseEntity.status(HttpStatus.CREATED).body(estado);
     }
 
     @PutMapping("/{estadoId}")

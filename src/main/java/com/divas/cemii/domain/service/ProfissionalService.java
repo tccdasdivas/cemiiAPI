@@ -4,6 +4,7 @@ import com.divas.cemii.domain.exception.EntidadeEmUsoException;
 import com.divas.cemii.domain.exception.EntidadeNaoEncontradaException;
 import com.divas.cemii.domain.model.Profissional;
 import com.divas.cemii.domain.repository.ProfissionalRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
@@ -11,6 +12,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ProfissionalService {
 
+    @Autowired
     private ProfissionalRepository profissionalRepository;
 
     public Profissional salvar(Profissional profissional){
