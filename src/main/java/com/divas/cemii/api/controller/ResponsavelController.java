@@ -44,6 +44,11 @@ public class ResponsavelController {
         return responsavelService.salvar(responsavel);
     }
 
+    public ResponseEntity<Responsavel> verificar(@RequestBody Responsavel responsavel) {
+        Responsavel salvo = responsavelService.verificar(responsavel.getNascimento());
+        return ResponseEntity.ok(salvo);
+    }
+
     @PutMapping("/{responsavelId}")
     public ResponseEntity<Responsavel> atualizar(@PathVariable Long responsavelId, @RequestBody Responsavel responsavel){
         Optional <Responsavel> responsavelAtual = responsavelRepository.findById(responsavelId);

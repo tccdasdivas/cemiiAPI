@@ -3,6 +3,7 @@ package com.divas.cemii.api.controller;
 import com.divas.cemii.domain.exception.EntidadeEmUsoException;
 import com.divas.cemii.domain.model.Cidade;
 import com.divas.cemii.domain.model.Idoso;
+import com.divas.cemii.domain.model.Responsavel;
 import com.divas.cemii.domain.repository.IdosoRepository;
 import com.divas.cemii.domain.service.IdosoService;
 import org.springframework.beans.BeanUtils;
@@ -43,6 +44,11 @@ public class IdosoController {
     @ResponseStatus(HttpStatus.CREATED)
     public Idoso adicionar(@RequestBody Idoso idoso){
         return idosoService.salvar(idoso);
+    }
+
+    public ResponseEntity<Idoso> verificar(@RequestBody Idoso idoso) {
+        Idoso salvo = idosoService.verificar(idoso.getNascimento());
+        return ResponseEntity.ok(salvo);
     }
 
     @PutMapping("/{idosoId}")

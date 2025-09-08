@@ -19,20 +19,7 @@ public class ResponsavelService {
     @Autowired
     private ResponsavelRepository responsavelRepository;
 
-    public Responsavel salvar(Responsavel responsavel){
-        return responsavelRepository.save(responsavel);
-    }
-
-    public void excluir(Long id){
-        try{
-            responsavelRepository.deleteById(id);
-        }
-        catch (DataIntegrityViolationException e){
-            throw new EntidadeEmUsoException(String.format("Responsável ou código %d não pode ser removida, pois está em uso.", id));
-        }
-        catch (EmptyResultDataAccessException e){
-            throw new EntidadeNaoEncontradaException(String.format("Não existe cadastro de responsável %d", id));
-        }
+    public Responsavel salvar(Responsavel responsavel){return responsavelRepository.save(responsavel);
     }
 
     public Responsavel verificar(LocalDate nascimento){
@@ -47,4 +34,18 @@ public class ResponsavelService {
         } else {throw new IllegalArgumentException("Cadastro não permitido: menor de idade.");
         }
     }
+
+    public void excluir(Long id){
+        try{
+            responsavelRepository.deleteById(id);
+        }
+        catch (DataIntegrityViolationException e){
+            throw new EntidadeEmUsoException(String.format("Responsável ou código %d não pode ser removida, pois está em uso.", id));
+        }
+        catch (EmptyResultDataAccessException e){
+            throw new EntidadeNaoEncontradaException(String.format("Não existe cadastro de responsável %d", id));
+        }
+    }
+
+
 }

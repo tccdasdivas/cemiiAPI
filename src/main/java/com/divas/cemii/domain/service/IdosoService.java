@@ -3,6 +3,7 @@ package com.divas.cemii.domain.service;
 import com.divas.cemii.domain.exception.EntidadeEmUsoException;
 import com.divas.cemii.domain.exception.EntidadeNaoEncontradaException;
 import com.divas.cemii.domain.model.Idoso;
+import com.divas.cemii.domain.model.Responsavel;
 import com.divas.cemii.domain.repository.IdosoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;
@@ -20,6 +21,19 @@ public class IdosoService {
 
     public Idoso salvar(Idoso idoso){
         return idosoRepository.save(idoso);
+    }
+
+    public Idoso verificar(LocalDate nascimento){
+
+        LocalDate dataAtual = LocalDate.now();
+        int idade = Period.between(nascimento, dataAtual).getYears();
+
+        if (idade <= 60) {
+            Idoso novoIdoso = new Idoso();
+            novoIdoso.setNascimento(nascimento);
+            return idosoRepository.save(novoIdoso);
+        } else {throw new IllegalArgumentException("Cadastro não permitido: Não é idoso.");
+        }
     }
 
     public void excluir(Long id){
