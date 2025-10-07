@@ -22,12 +22,4 @@ public class Profissao {
     @NotBlank(message = "Este campo é obrigatório")
     private String profissao;
 
-    @CreationTimestamp
-    @Column(name = "data_cadastro", columnDefinition = "datetime")
-    private LocalDateTime dataCadastro;
-
-    @UpdateTimestamp
-    @Column(name = "data_atualizacao", columnDefinition = "datetime")
-    private LocalDateTime dataAtualizacao;
-
 }

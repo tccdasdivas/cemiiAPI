@@ -37,6 +37,9 @@ public class Responsavel {
     @JoinColumn(name="cidade_id")
     private Cidade cidade;
 
+    @Column(name = "senha", length  = 254)
+    private String senha;
+
     @Embedded
     private Endereco endereco;
 
@@ -46,12 +49,4 @@ public class Responsavel {
 
     @NotBlank(message = "Este campo é obrigatório")
     private String foto;
-
-    @CreationTimestamp
-    @Column(name = "data_cadastro", columnDefinition = "datetime")
-    private LocalDateTime dataCadastro;
-
-    @UpdateTimestamp
-    @Column(name = "data_atualizacao", columnDefinition = "datetime")
-    private LocalDateTime dataAtualizacao;
 }
