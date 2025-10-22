@@ -3,7 +3,6 @@ package com.divas.cemii.domain.service;
 import com.divas.cemii.domain.exception.EntidadeEmUsoException;
 import com.divas.cemii.domain.exception.EntidadeNaoEncontradaException;
 import com.divas.cemii.domain.model.Idoso;
-import com.divas.cemii.domain.model.Responsavel;
 import com.divas.cemii.domain.repository.IdosoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataIntegrityViolationException;

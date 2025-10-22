@@ -12,10 +12,9 @@ import lombok.EqualsAndHashCode;
 public class Cidade {
     @Id
     @EqualsAndHashCode.Include
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    private Long id; // id = código IBGE
 
-    @NotBlank(message = "Este campo é obrigatório")
+    @NotBlank
     private String nome;
 
     @ManyToOne

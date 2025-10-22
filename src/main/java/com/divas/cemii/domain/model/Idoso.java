@@ -46,6 +46,6 @@ public class Idoso {
 
 
     @ManyToOne
-    @JoinColumn(name = "responsavel_id")
-    private Responsavel responsavel;
+    @JoinColumn(name = "usuario_id")
+    private Usuario responsavel;
 }

@@ -10,11 +10,13 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Table(name = "tb_estado")
 public class Estado {
-    @EqualsAndHashCode.Include
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    @EqualsAndHashCode.Include
+    private Long id; // id será o código IBGE
 
-    @NotBlank(message = "Este campo é obrigatório")
+    @NotBlank
     private String nome;
+
+    @Column(length = 2)
+    private String sigla;
 }

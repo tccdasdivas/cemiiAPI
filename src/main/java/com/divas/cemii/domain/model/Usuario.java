@@ -17,24 +17,26 @@ public class Usuario {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @NotBlank(message = "Este campo é obrigatório")
+    //@NotBlank(message = "Este campo é obrigatório")
     private String nome;
 
-    @NotBlank(message = "Este campo é obrigatório")
+    //@NotBlank(message = "Este campo é obrigatório")
     private String email;
 
-    @NotBlank(message = "Este campo é obrigatório")
+    //@NotBlank(message = "Este campo é obrigatório")
     private String telefone;
 
-    @NotBlank(message = "Este campo é obrigatório")
+    //@NotBlank(message = "Este campo é obrigatório")
     private String cpf;
 
-    @NotBlank(message = "Este campo é obrigatório")
+    //@NotBlank(message = "Este campo é obrigatório")
     private String foto;
 
-    @ManyToOne
-    @JoinColumn(name = "profissao_id")
-    private Profissao profissao;
+    //@NotBlank(message = "Este campo é obrigatório")
+    private String parentesco;
+
+    //@NotBlank(message = "Este campo é obrigatório")
+    private String profissao;
 
     @ManyToOne
     @JoinColumn(name = "cidade_id")
@@ -46,7 +48,9 @@ public class Usuario {
     @Embedded
     private Endereco endereco;
 
-    @NotBlank(message = "Este campo é obrigatório")
+    //@NotBlank(message = "Este campo é obrigatório")
     @Column(name = "data_nascimento", columnDefinition = "datetime")
     private LocalDate nascimento;
+
+    private String coren;
 }
