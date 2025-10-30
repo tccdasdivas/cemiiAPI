@@ -53,4 +53,10 @@ public class Usuario {
     private LocalDate nascimento;
 
     private String coren;
+
+    private String logradouro;
+
+    private String numero;
+
+    private String necessidade;
 }

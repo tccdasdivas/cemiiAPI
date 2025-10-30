@@ -15,5 +15,9 @@ public record RegisterRequestDTO(
         String parentesco,
         String profissao,
         Cidade cidade,
-        String coren
+        String coren,
+        String logradouro,
+        String numero,
+        String necessidade
+
 ) {}

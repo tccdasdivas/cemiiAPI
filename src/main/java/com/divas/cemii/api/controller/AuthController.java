@@ -77,6 +77,9 @@ public class AuthController {
         novoUsuario.setParentesco(body.parentesco());
         novoUsuario.setProfissao(body.profissao());
         novoUsuario.setCoren(body.coren());
+        novoUsuario.setLogradouro(body.logradouro());
+        novoUsuario.setNumero(body.numero());
+        novoUsuario.setNecessidade(body.necessidade());
         novoUsuario.setCidade(body.cidade()); // importante: verificar se a entidade Cidade está correta
 
         usuarioRepository.save(novoUsuario);
