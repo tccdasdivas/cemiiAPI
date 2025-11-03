@@ -21,31 +21,31 @@ public class Idoso {
     @EqualsAndHashCode.Include
     private Long id;
 
-    @NotBlank(message = "Este campo é obrigatório")
+
     private String nome;
 
-    @NotBlank(message = "Este campo é obrigatório")
+
     private String cpf;
 
-    @NotBlank(message = "Este campo é obrigatório")
+
     private String foto;
 
-    @NotBlank(message = "Este campo é obrigatório")
-    private String necessidades;
+
+    private String necessidade;
 
     @ManyToOne
     @JoinColumn(name = "cidade_id")
     private Cidade cidade;
 
-    @Embedded
-    private Endereco endereco;
+    private String logradouro;
 
-    @NotBlank(message = "Este campo é obrigatório")
+    private String numero;
+
     @Column(name = "data_nascimento", columnDefinition = "datetime")
     private LocalDate nascimento;
 
-
     @ManyToOne
-    @JoinColumn(name = "usuario_id")
+    @JoinColumn(name = "responsavel_id")
     private Usuario responsavel;
+
 }

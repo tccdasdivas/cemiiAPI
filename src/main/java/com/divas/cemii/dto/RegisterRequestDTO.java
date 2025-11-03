@@ -1,6 +1,7 @@
 package com.divas.cemii.dto;
 
 import com.divas.cemii.domain.model.Cidade;
+import com.divas.cemii.domain.model.Usuario;
 
 import java.time.LocalDate;
 
@@ -18,6 +19,8 @@ public record RegisterRequestDTO(
         String coren,
         String logradouro,
         String numero,
-        String necessidade
+        String necessidade,
+
+        Usuario responsavel
 
 ) {}

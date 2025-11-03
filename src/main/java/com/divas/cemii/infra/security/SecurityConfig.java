@@ -43,6 +43,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios").permitAll()
                         .requestMatchers(HttpMethod.POST, "/usuarios/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/idosos/**").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/idosos").permitAll()
                         .requestMatchers("/auth/verificar-email").permitAll()
                         .requestMatchers("/ibge/**").permitAll() // <-- ADICIONE ESTA LINHA
 

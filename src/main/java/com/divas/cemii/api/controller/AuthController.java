@@ -1,6 +1,8 @@
 package com.divas.cemii.api.controller;
 
+import com.divas.cemii.domain.model.Idoso;
 import com.divas.cemii.domain.model.Usuario;
+import com.divas.cemii.domain.repository.IdosoRepository;
 import com.divas.cemii.domain.repository.UsuarioRepository;
 import com.divas.cemii.dto.LoginRequestDTO;
 import com.divas.cemii.dto.RegisterRequestDTO;
@@ -20,6 +22,9 @@ public class AuthController {
 
     @Autowired
     private UsuarioRepository usuarioRepository;
+
+    @Autowired
+    private IdosoRepository idosoRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -77,9 +82,6 @@ public class AuthController {
         novoUsuario.setParentesco(body.parentesco());
         novoUsuario.setProfissao(body.profissao());
         novoUsuario.setCoren(body.coren());
-        novoUsuario.setLogradouro(body.logradouro());
-        novoUsuario.setNumero(body.numero());
-        novoUsuario.setNecessidade(body.necessidade());
         novoUsuario.setCidade(body.cidade()); // importante: verificar se a entidade Cidade está correta
 
         usuarioRepository.save(novoUsuario);
@@ -89,5 +91,6 @@ public class AuthController {
                 new ResponseDTO(novoUsuario.getId(), novoUsuario.getNome(), token, novoUsuario.getEmail())
         );
     }
+
 
 }
