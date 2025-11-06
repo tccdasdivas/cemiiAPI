@@ -4,5 +4,6 @@ public record ResponseDTO(
         Long id,
         String nome,
         String token,
-        String email
+        String email,
+        String tipo
 ) { }

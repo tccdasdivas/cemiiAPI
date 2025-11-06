@@ -1,6 +1,5 @@
 package com.divas.cemii.api.controller;
 
-import com.divas.cemii.domain.model.Idoso;
 import com.divas.cemii.domain.model.Usuario;
 import com.divas.cemii.domain.repository.IdosoRepository;
 import com.divas.cemii.domain.repository.UsuarioRepository;
@@ -41,7 +40,7 @@ public class AuthController {
         if (passwordEncoder.matches(body.senha(), usuario.getSenha())) {
             String token = tokenService.generateToken(usuario);
             return ResponseEntity.ok(
-                    new ResponseDTO(usuario.getId(), usuario.getNome(), token, usuario.getEmail())
+                    new ResponseDTO(usuario.getId(), usuario.getNome(), token, usuario.getEmail(), usuario.getTipo())
             );
         }
 
@@ -59,7 +58,7 @@ public class AuthController {
         String token = tokenService.generateToken(usuario);
 
         return ResponseEntity.ok(
-                new ResponseDTO(usuario.getId(), usuario.getNome(), token, usuario.getEmail())
+                new ResponseDTO(usuario.getId(), usuario.getNome(), token, usuario.getEmail(), usuario.getTipo())
         );
     }
 
@@ -82,15 +81,18 @@ public class AuthController {
         novoUsuario.setParentesco(body.parentesco());
         novoUsuario.setProfissao(body.profissao());
         novoUsuario.setCoren(body.coren());
-        novoUsuario.setCidade(body.cidade()); // importante: verificar se a entidade Cidade está correta
+        novoUsuario.setCidade(body.cidade());// importante: verificar se a entidade Cidade está correta
+
+        if (body.tipo() == null || body.tipo().isBlank()) {
+            return ResponseEntity.badRequest().body("Campo 'tipo' é obrigatório (RESPONSAVEL ou CUIDADOR).");
+        }
+        novoUsuario.setTipo(body.tipo().toUpperCase());
 
         usuarioRepository.save(novoUsuario);
 
         String token = tokenService.generateToken(novoUsuario);
         return ResponseEntity.ok(
-                new ResponseDTO(novoUsuario.getId(), novoUsuario.getNome(), token, novoUsuario.getEmail())
+                new ResponseDTO(novoUsuario.getId(), novoUsuario.getNome(), token, novoUsuario.getEmail(), novoUsuario.getTipo())
         );
     }
-
-
 }

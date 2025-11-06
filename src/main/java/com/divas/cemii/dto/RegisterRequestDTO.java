@@ -20,6 +20,7 @@ public record RegisterRequestDTO(
         String logradouro,
         String numero,
         String necessidade,
+        String tipo,
 
         Usuario responsavel
 
